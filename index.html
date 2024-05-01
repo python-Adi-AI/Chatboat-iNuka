@@ -40,7 +40,7 @@
 #chatbot-toggle-btn {
     position: fixed;
     bottom: 20px;
-    right: -24px;
+    right: 8px;
     padding: 12px 15px;
     border: none;
     background-color: #0e2031 ;
@@ -235,7 +235,7 @@
     </style>
 <body>
     <button id="chatbot-toggle-btn" class="icon-container">
-        <img src="https://coruzant.com/wp-content/uploads/2022/10/chatbot-robot.jpg" alt="buttonpng"  width="30px" height="30px"/>
+        <img src="./chat1.jpg" alt="buttonpng"  width="30px" height="30px"/>
     </button>
     <div class="chatbot-popup" id="chatbot-popup">
         <div class="chat-header">
@@ -282,7 +282,14 @@ const responses = {
     "no": "Okay, if you change your mind just let me know!"
 };
 
-document.getElementById('chatbot-toggle-btn').addEventListener('click', toggleChatbot);
+document.getElementById('chatbot-toggle-btn').addEventListener('click', function() {
+    toggleChatbot();
+   
+    setTimeout(function() {
+        appendMessage('bot', "Hello, Good Morning! How Can I assite You Today ?");
+    }, 200);  //1 second
+});
+
 document.getElementById('close-btn').addEventListener('click', toggleChatbot);
 document.getElementById('send-btn').addEventListener('click', sendMessage);
 document.getElementById('user-input').addEventListener('keypress', function(e) {
@@ -291,10 +298,26 @@ document.getElementById('user-input').addEventListener('keypress', function(e) {
     }
 });
 
+
+
+
+
+
+
 function toggleChatbot() {
     const chatbotPopup = document.getElementById('chatbot-popup');
     chatbotPopup.style.display = chatbotPopup.style.display === 'none' ? 'block' : 'none';
 }
+
+
+function toggleChatbot() {
+    const chatbotPopup = document.getElementById('chatbot-popup');
+    chatbotPopup.style.display = chatbotPopup.style.display === 'none' ? 'block' : 'none';
+    
+    const chatBox = document.getElementById('chat-box');
+    chatBox.innerHTML = ''; 
+}
+
 
 function sendMessage() {
     const userInput = document.getElementById('user-input').value.trim();
